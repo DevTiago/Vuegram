@@ -1,0 +1,77 @@
+.card {
+  width: 50%;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  color: #606060;
+  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.025),
+    0 9px 46px 8px rgba(0, 0, 0, 0.025), 0 11px 15px -7px rgba(0, 0, 0, 0.025);
+  .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+  .formGroup {
+    margin-bottom: 1.75rem;
+    .label {
+      font-size: 0.75rem;
+      color: #a7a7a7;
+    }
+    .formGroupWrapper {
+      position: relative;
+      input {
+        padding: 10px;
+        width: 100%;
+        height: 50%;
+        line-height: 50px;
+        border: 0;
+        border-bottom: 1px solid #c7c7c7;
+        color: #606060;
+        text-indent: 2rem;
+        &::placeholder {
+          color: #a7a7a7;
+        }
+        &:focus {
+          border-color: #b44ff6;
+          outline: none;
+        }
+        &:focus + span {
+          color: #b44ff6;
+        }
+      }
+      .font-awesome-icon {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        font-size: 20px;
+      }
+    }
+  }
+  button {
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 2rem;
+    font-size: 0.875rem;
+    border-radius: 18px;
+    border: 0;
+    background: linear-gradient(45deg, #499be7, #f506ff);
+    color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    &:hover {
+      outline: none;
+    }
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+  .errorMsg {
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+  }
+}
