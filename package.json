@@ -2,7 +2,7 @@
   "name": "vuegram",
   "version": "1.0.0",
   "description": "Vue.js project with Firebase",
-  "author": "Tiago Oliveira <tiagofho@gmail.com>",
+  "author": "Tiago Oliveira",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -16,10 +16,13 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/vue-fontawesome": "^0.1.9",
     "bootstrap": "^4.5.0",
-    "bootstrap-vue": "^2.13.1",
+    "bootstrap-vue": "^2.15.0",
+    "buefy": "^0.8.20",
     "firebase": "^7.14.3",
+    "moment": "^2.26.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vue-spinner": "^1.0.3",
     "vuefire": "^2.2.2",
     "vuex": "^3.3.0"
   },
