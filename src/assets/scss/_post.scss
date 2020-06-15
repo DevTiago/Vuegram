@@ -1,0 +1,28 @@
+.card {
+  width: 60%;
+  height: 156px;
+  padding: 1em;
+  margin: 5px;
+  margin: 15px auto;
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .media {
+    display: flex;
+    align-items: center;
+  }
+
+  .title {
+    margin-left: 5px
+  }
+
+  time {
+    font-size: 12px
+  }
+
+
+
+}

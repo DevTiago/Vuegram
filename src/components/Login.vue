@@ -1,7 +1,7 @@
 <template>
   <span>
     <div v-if="showLoginForm" class="container d-flex justify-content-center">
-      <div class="card mt-5">
+      <div class="card mt-5 col-xl-6 col-md-8 col-12">
         <h2 class="card-title">Login</h2>
         <form @submit.prevent>
           <div class="formGroup">
@@ -31,7 +31,7 @@
 
     <!-- Register Form -->
     <div v-else class="container d-flex justify-content-center">
-      <div class="card mt-5">
+      <div class="card mt-5 col-xl-6 col-md-8 col-12">
         <h2 class="card-title">Register a new account</h2>
         <form @submit.prevent>
           <div class="formGroup">

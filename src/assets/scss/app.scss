@@ -1,2 +1,9 @@
-@import 'login';
 @import 'navbar';
+@import 'login';
+@import 'dashboard';
+@import 'post';
+
+#app {
+    background-color: #f0f0f0;
+    height: 100vh
+}

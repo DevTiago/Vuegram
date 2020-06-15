@@ -1,47 +1,37 @@
 <template>
   <div id="dashboard">
     <section>
-      <div class="col1">
+      <div class="container">
         <div class="profile">
-          <h5>{{ userProfile.name }}</h5>
           <p>{{ userProfile.title }}</p>
-          <div class="create-post">
-            <p>create a post</p>
-            <form @submit.prevent>
-              <textarea v-model.trim="post.content"></textarea>
-              <button @click="createPost" :disabled="post.content == ''" class="button">Post</button>
+          <div class="create-post m-auto col-6">
+            <p>Post someting to the world:</p>
+            <form @submit.prevent class="postForm">
+              <b-input maxlength="200" type="textarea" v-model.trim="post.content"></b-input>
+              <button
+                @click="createPost"
+                :disabled="post.content == ''"
+                class="button is-primary"
+              >Post</button>
             </form>
           </div>
         </div>
-      </div>
 
-      <div class="col2">
-        <div v-if="posts">
-          <div v-for="(post, index) in posts" v-bind:key="index" class="post">
-            <h5>{{ post.userName }}</h5>
-            <span>{{ post.createdOn | formatDate }}</span>
-            <p>{{ post.content | trimLength }}</p>
-            <ul>
-              <li>
-                <a @click="openCommentModal(post)">comments {{ post.comments }}</a>
-              </li>
-              <li>
-                <a @click="likePost(post.id, post.likes)">likes {{ post.likes }}</a>
-              </li>
-              <li>
-                <a @click="viewPost(post)">view full post</a>
-              </li>
-            </ul>
+        <div class="posts">
+          <div v-if="posts.length !== 0" class="cardContainer">
+            <div v-for="(post, index) in posts" v-bind:key="index">
+              <Post v-bind:post="post"></Post>
+            </div>
           </div>
-        </div>
-        <div v-else>
-          <p class="no-results">There are currently no posts to show</p>
+          <div v-else>
+            <p class="no-results text-center">No recent posts!</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!--  Comments modal -->
-    <transition name="fade">
+    <!-- Comments modal -->
+    <!-- <transition name="fade">
       <div v-if="showCommentModal" class="c-modal">
         <div class="c-container">
           <a @click="closeCommentModal">X</a>
@@ -52,10 +42,10 @@
           </form>
         </div>
       </div>
-    </transition>
+    </transition>-->
 
     <!-- post modal -->
-    <transition name="fade">
+    <!-- <transition name="fade">
       <div v-if="showPostModal" class="p-modal">
         <div class="p-container">
           <a @click="closePostModal" class="close">X</a>
@@ -81,17 +71,22 @@
           </div>
         </div>
       </div>
-    </transition>
+    </transition>-->
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 import moment from "moment";
+import Post from './Post.vue';
+
 const fb = require("../../firebaseConfig");
 
 export default {
   name: "Dashboard",
+  components: {
+    Post
+  },
   data() {
     return {
       post: {
@@ -201,41 +196,6 @@ export default {
         .catch(err => {
           console.log(err);
         });
-    },
-    viewPost(post) {
-    fb.commentsCollection.where('postId', '==', post.id).get().then(docs => {
-        let commentsArray = []
-
-        docs.forEach(doc => {
-            let comment = doc.data()
-            comment.id = doc.id
-            commentsArray.push(comment)
-        })
-
-        this.postComments = commentsArray
-        this.fullPost = post
-        this.showPostModal = true
-    }).catch(err => {
-        console.log(err)
-    })
-},
-closePostModal() {
-    this.postComments = []
-    this.showPostModal = false
-}
-  },
-  filters: {
-    formatDate(val) {
-      if (!val) {
-        return "-";
-      }
-      let date = val.toDate();
-      return moment(date).fromNow();
-    },
-    trimLength(val) {
-      if (val.length < 200) {
-        return val;
-      } else return `${val.substring(0, 200)}...`;
     }
   }
 };
